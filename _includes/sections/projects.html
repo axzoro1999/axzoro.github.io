@@ -1,0 +1,86 @@
+{% assign projects = site.projects | sort: "order" %}
+{% assign total_projects = projects | size %}
+
+{% comment %} Build the filter bar out of every tag used across the projects. {% endcomment %}
+{% assign tag_blob = "" %}
+{% for project in projects %}
+  {% for tag in project.tags %}
+    {% assign probe = tag | append: "," %}
+    {% unless tag_blob contains probe %}{% assign tag_blob = tag_blob | append: probe %}{% endunless %}
+  {% endfor %}
+{% endfor %}
+{% assign tag_list = tag_blob | split: "," | sort_natural %}
+
+<section id="projects" class="op-section">
+  {% include sections/heading.html index="03" title="Projects" id="projects" subtitle="Hover a card to play its demo." %}
+
+  {% if total_projects == 0 %}
+    <p class="op-empty">No projects yet — add a Markdown file to <code>_projects/</code>.</p>
+  {% else %}
+    {% if tag_list.size > 1 %}
+      <div class="op-filter reveal" role="group" aria-label="Filter projects by topic">
+        <button class="op-filter__chip is-active" data-filter="all">All<span>{{ total_projects }}</span></button>
+        {% for tag in tag_list %}
+          <button class="op-filter__chip" data-filter="{{ tag | slugify }}">{{ tag }}</button>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="proj-grid">
+      {% for project in projects %}
+        {% assign slugs = "" %}
+        {% for tag in project.tags %}{% assign slugs = slugs | append: tag | slugify | append: " " %}{% endfor %}
+
+        <article class="proj reveal" data-tags="{{ slugs | strip }}">
+          <div class="proj__media">
+            {% if project.video %}
+              <video class="proj__video" muted loop playsinline preload="metadata"
+                     {% if project.poster %}poster="{{ project.poster | prepend: site.baseurl }}"{% endif %}>
+                <source src="{{ project.video | prepend: site.baseurl }}" type="video/mp4">
+              </video>
+              <span class="proj__hint"><i class="fa-solid fa-play" aria-hidden="true"></i>hover to play</span>
+            {% elsif project.gif %}
+              <img class="proj__img" loading="lazy" alt="{{ project.title }} demo"
+                   src="{{ project.poster | default: project.gif | prepend: site.baseurl }}"
+                   {% if project.poster %}data-static="{{ project.poster | prepend: site.baseurl }}"{% endif %}
+                   data-gif="{{ project.gif | prepend: site.baseurl }}">
+              <span class="proj__hint"><i class="fa-solid fa-play" aria-hidden="true"></i>hover to play</span>
+            {% elsif project.poster or project.teaser %}
+              <img class="proj__img" loading="lazy" alt="{{ project.title }}"
+                   src="{{ project.poster | default: project.teaser | prepend: site.baseurl }}">
+            {% else %}
+              <div class="proj__placeholder"><i class="fa-solid fa-robot" aria-hidden="true"></i></div>
+            {% endif %}
+
+            {% if project.status %}<span class="proj__status">{{ project.status }}</span>{% endif %}
+          </div>
+
+          <div class="proj__body">
+            <h3 class="proj__title">
+              <a href="{{ project.url | prepend: site.baseurl }}">{{ project.title }}</a>
+            </h3>
+            {% if project.excerpt %}
+              <p class="proj__text">{{ project.excerpt | markdownify | strip_html | strip_newlines | truncate: 180 }}</p>
+            {% endif %}
+
+            {% if project.tags %}
+              <p class="op-chips op-chips--tight">
+                {% for tag in project.tags %}<span class="op-chip op-chip--sm">{{ tag }}</span>{% endfor %}
+              </p>
+            {% endif %}
+
+            {% if project.links %}
+              <p class="proj__links">
+                {% for link in project.links %}
+                  <a class="op-btn op-btn--sm" href="{{ link.url }}">
+                    <i class="{{ link.icon | default: 'fas fa-arrow-up-right-from-square' }}" aria-hidden="true"></i>{{ link.name }}
+                  </a>
+                {% endfor %}
+              </p>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>

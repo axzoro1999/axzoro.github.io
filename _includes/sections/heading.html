@@ -1,0 +1,6 @@
+<header class="op-head">
+  <span class="op-head__index">{{ include.index }}</span>
+  <h2 class="op-head__title">{{ include.title }}</h2>
+  <a class="op-head__anchor" href="#{{ include.id }}" aria-label="Link to the {{ include.title }} section">#</a>
+</header>
+{% if include.subtitle %}<p class="op-head__subtitle">{{ include.subtitle }}</p>{% endif %}

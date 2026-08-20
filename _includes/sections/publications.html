@@ -1,0 +1,22 @@
+{% assign publications = site.publications | sort: "date" | reverse %}
+
+<section id="publications" class="op-section">
+  {% include sections/heading.html index="02" title="Publications" id="publications" %}
+
+  {% if site.author.googlescholar %}
+    <p class="op-note">
+      A full and always up-to-date list lives on
+      <a href="{{ site.author.googlescholar }}">Google Scholar</a>.
+    </p>
+  {% endif %}
+
+  {% if publications.size == 0 %}
+    <p class="op-empty">No publications yet — add a Markdown file to <code>_publications/</code>.</p>
+  {% else %}
+    <div class="pub-list">
+      {% for post in publications %}
+        {% include publication-card.html %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>

@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+{% comment %}
+  Single page front page: the author profile lives in the left sidebar, every
+  section below owns the anchor that the top navigation (_data/navigation.yml)
+  points at, so keep the ids in sync.
+{% endcomment %}
+
+<div id="main" role="main">
+  {% include sidebar.html %}
+
+  <div class="op-page">
+    {% include sections/bio.html %}
+    {% include sections/publications.html %}
+    {% include sections/projects.html %}
+    {% include sections/cv.html %}
+  </div>
+</div>
+
+<a class="op-to-top" href="#bio" aria-label="Back to top" title="Back to top">
+  <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+</a>

@@ -1,0 +1,89 @@
+{% assign cv = site.data.cv %}
+{% assign cv_pdf = cv.download | default: site.author.cv_pdf %}
+
+<section id="cv" class="op-section">
+  {% include sections/heading.html index="04" title="CV" id="cv" %}
+
+  {% if cv_pdf %}
+    <p class="op-note">
+      <a class="op-btn op-btn--solid" href="{{ cv_pdf | prepend: site.baseurl }}">
+        <i class="fas fa-file-arrow-down" aria-hidden="true"></i>Download full CV (PDF)
+      </a>
+    </p>
+  {% endif %}
+
+  {% if cv.experience %}
+    <h3 class="op-subhead">Experience</h3>
+    <ol class="tl">
+      {% for item in cv.experience %}
+        <li class="tl__item reveal">
+          <span class="tl__period">{{ item.period }}</span>
+          <h4 class="tl__role">{{ item.role }}{% if item.org %}<span class="tl__org">{{ item.org }}</span>{% endif %}</h4>
+          {% if item.location %}<p class="tl__where"><i class="fas fa-location-dot" aria-hidden="true"></i>{{ item.location }}</p>{% endif %}
+          {% if item.highlights %}
+            <ul class="tl__points">
+              {% for point in item.highlights %}<li>{{ point | markdownify | remove: "<p>" | remove: "</p>" }}</li>{% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  {% endif %}
+
+  {% if cv.education %}
+    <h3 class="op-subhead">Education</h3>
+    <ol class="tl">
+      {% for item in cv.education %}
+        <li class="tl__item reveal">
+          <span class="tl__period">{{ item.period }}</span>
+          <h4 class="tl__role">{{ item.degree }}{% if item.org %}<span class="tl__org">{{ item.org }}</span>{% endif %}</h4>
+          {% if item.location %}<p class="tl__where"><i class="fas fa-location-dot" aria-hidden="true"></i>{{ item.location }}</p>{% endif %}
+          {% if item.highlights %}
+            <ul class="tl__points">
+              {% for point in item.highlights %}<li>{{ point | markdownify | remove: "<p>" | remove: "</p>" }}</li>{% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  {% endif %}
+
+  {% if cv.skills %}
+    <h3 class="op-subhead">Skills</h3>
+    <div class="op-cards">
+      {% for group in cv.skills %}
+        <div class="op-card reveal">
+          <h4 class="op-card__title">{{ group.group }}</h4>
+          <div class="op-chips op-chips--tight">
+            {% for item in group.items %}<span class="op-chip op-chip--sm">{{ item }}</span>{% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if cv.awards or cv.service %}
+    <div class="op-cards op-cards--two">
+      {% if cv.awards %}
+        <div class="op-card reveal">
+          <h4 class="op-card__title">Awards &amp; Honors</h4>
+          <ul class="op-card__list">
+            {% for item in cv.awards %}
+              <li>{% if item.year %}<span class="op-card__year">{{ item.year }}</span>{% endif %}{{ item.name | markdownify | remove: "<p>" | remove: "</p>" }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      {% if cv.service %}
+        <div class="op-card reveal">
+          <h4 class="op-card__title">Service &amp; Reviewing</h4>
+          <ul class="op-card__list">
+            {% for item in cv.service %}
+              <li>{{ item | markdownify | remove: "<p>" | remove: "</p>" }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+</section>

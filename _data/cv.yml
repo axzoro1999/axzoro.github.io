@@ -1,0 +1,50 @@
+# CV 板块的数据来源（首页 #cv 部分）。
+# 任何一个字段留空或整段删掉，对应的区块就不会渲染。
+# download 留空时会回退到 _config.yml 里的 author.cv_pdf。
+
+download:
+
+experience:
+  - 
+    org: "ByteDance, Seed-Robotics"
+    role: "Robotics Researcher"
+    period: "03/2025 — Present"
+    location: "Beijing, China"
+    highlights:
+      - "Seed GR-3 & GR-RL: vision-language-action models for real-world dexterous manipulation."
+      - "F-ACIL: A factor-aware compositional iterative learning for data-efficient policy generalization."
+      - "Pretraining & Data Scaling: exploring ego/umi/real robot data for pre-training and scaling."
+
+  - role: "Autonomous Driving Algorithm Engineer"
+    org: "AutoX"
+    period: "12/2023 — 02/2025"
+    location: "Shenzhen, China"
+    highlights:
+      - "L3/4 autonomous robotaxi."
+      - "Algorithms development and optimization."
+
+  - role: "MLE Intern"
+    org: "Bosch"
+    period: "06/2021 — 10/2021"
+    location: "Suzhou, China"
+    highlights:
+      - "Cabin performance prediction and analysis based on ML."
+
+education:
+  - degree: "M.S. in Spatio-temporal Analytics and Big Data Mining"
+    org: "University College London (UCL)"
+    period: "2022 — 2023"
+    location: "London, United Kingdom"
+
+  - degree: "B.Sc. in Information Management and Information Systems"
+    org: "Xi'an Jiaotong-Liverpool University (XJTLU)"
+    period: "2018 — 2022"
+    location: "Suzhou, China"
+
+skills:
+  - group: "Research"
+    items: ["Vision-Language-Action", "Imitation Learning", "Reinforcement Learning", "Representation Learning", "World Models"]
+  - group: "Engineering"
+    items: ["PyTorch", "JAX", "Python", "C++", "ROS 2", "CUDA", "Distributed Training"]
+  - group: "Robotics Stack"
+    items: ["IsaacSim", "MuJoCo", "Franka / UR5", "Dexterous Hands", "Teleoperation"]

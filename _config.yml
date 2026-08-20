@@ -7,16 +7,16 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "en-US"
-site_theme               : "mint" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Bio"
+locale                   : "cn-China"
+site_theme               : "contrast" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
+title                    : "Yuyang Xiao"   # 左上角站名 + 浏览器标签页标题
 title_separator          : "-"
 name                     : &name "Yuyang Xiao"
-description              : &description "Yuyang Xiao's academic portfolio"   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "Yuyang Xiao's academic homepage"
 url                      : https://axzoro.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "academicpages/academicpages.github.io"
+repository               : "axzoro1999/axzoro.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
@@ -24,72 +24,34 @@ repository               : "academicpages/academicpages.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
-  pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
-  uri              : # URL
-  email            : "none@example.org" 
+  name             : "Yuyang Xiao"
+  pronouns         : "he/him"  
+  role             : "Robotics Researcher @ ByteDance Seed-Robotics"   # shown under the name on the front page
+  bio              : "I am a robotics researcher at Bytedance Seed-Robotics. My work and research focus on manipulation VLA, multi-modal modeling, scalable data-efficient representation learning, and embodied AI, with a long-term interest in latent action paradigms and world cognition for learning physical interaction dynamics."
+  location         : "BeiJing, China"
+  employer         : "ByteDance Ltd."
+  email            : "axzoro1999@gmail.com"      # primary address used by the mail button
+  email_alt        : "axzoro1999@163.com"        # optional secondary address
+  # cv_pdf         : "/files/cv.pdf"             # 把 PDF 放进 files/ 后取消注释，CV 板块会出现下载按钮
+
+  # Keywords rendered as chips in the front page bio section
+  interests:
+    - "Manipulation VLA"
+    - "Multi-modal Modeling"
+    - "Latent Action"
+    - "Data-efficient Representation Learning"
+    - "Embodied AI"
+    - "World Cognition"
 
   # Academic websites
-  academia         : # URL
-  arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
-  inspire-hep      : # URL
-  impactstory      : # URL
-  orcid            : "https://orcid.org/yourorcidurl"
-  semantic         : # URL
-  ssrn             : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  researchgate     : # URL
-  scopus           : # URL
-  zotero           : # URL
-
-
-  # Repositories and software development
-  bitbucket        : # Username - Update with your username on the site
-  codepen          : # Username
-  dribbble         : # Username
-  github           : "academicpages"
-  kaggle           : # Username  
-  stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
+  googlescholar    : "https://scholar.google.com/citations?hl=zh-CN&view_op=list_works&gmla=AO4B3jsifC3xP9_0gQpLE_qRlzpxKksruPWwvXi3CT_Erj9Fx3wsSm7KMs40LC4HVnxD04b2EXYRRKUZdMzXdcg56HyGh7I4HVToOvbPCZAA-qrW2YIwv_LMupwAzpCCj3g&user=mzB2h4IAAAAJ"
 
   # Social media
-  artstation       : # Username
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
-  facebook         : # Username
-  flickr           : # Username
-  foursquare       : # Username
-  goodreads        : # Username
-  google_plus      : # Username
-  keybase          : # Username
   instagram        : # Username
-  lastfm           : # Username
   linkedin         : # Username
-  mastodon         : # URL
-  medium           : # URL
-  pinterest        : # Username
-  soundcloud       : # Username
   steam            : # Username
-  telegram         : # URL
-  tumblr           : # Username
-  twitter          : # Username for X / Twitter
-  vine             : # Username
-  weibo            : # Username
-  wikipedia        : # Username
-  xing             : # Username
-  youtube          : # Username
+  X(twitter)          : # Username for X / Twitter
   zhihu            : # Username
-
-# Publication Category - The following the list of publication categories and their headings
-publication_category:
-  books:
-    title: 'Books'
-  manuscripts:
-    title: 'Journal Articles'    
-  conferences:
-    title: 'Conference Papers'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews
@@ -192,6 +154,13 @@ exclude:
   - README
   - tmp
   - vendor
+  - docker-compose.yaml
+  - markdown_generator
+  - scripts
+  - talkmap
+  - talkmap.ipynb
+  - talkmap.py
+  - talkmap_out.ipynb
 keep_files:
   - .git
   - .svn
@@ -221,16 +190,10 @@ kramdown:
 
 # These settings control the types of collections used by the template
 collections:
-  teaching:
-    output: true
-    permalink: /:collection/:path/
   publications:
     output: true
     permalink: /:collection/:path/
-  portfolio:
-    output: true
-    permalink: /:collection/:path/
-  talks:
+  projects:
     output: true
     permalink: /:collection/:path/
 
@@ -255,15 +218,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _teaching
-  - scope:
-      path: ""
-      type: teaching
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
   # _publications
   - scope:
       path: ""
@@ -273,23 +227,15 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _portfolio
+  # _projects
   - scope:
       path: ""
-      type: portfolio
+      type: projects
     values:
       layout: single
       author_profile: true
       share: true
-      comment: true
-  # _talks
-  - scope:
-      path: ""
-      type: talks
-    values:
-      layout: talk
-      author_profile: true
-      share: true
+      comments: false
 
 
 # Sass/SCSS

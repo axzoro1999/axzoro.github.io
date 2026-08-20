@@ -1,0 +1,65 @@
+{% comment %}
+  One publication entry. Expects `post` to be a document of the publications
+  collection. Supported front matter beyond the template defaults:
+    authors     - markdown string, wrap your own name in ** ** to bold it
+    highlights  - list of bullet points; markdown and inline HTML are kept, so
+                  <span class="hl">…</span> or style="color:#…" both work
+    excerpt     - single blurb, used when there are no highlights
+    teaser_gif  - looping animation used as the thumbnail
+    teaser      - static thumbnail, only used when there is no teaser_gif
+    award       - short badge text, e.g. "Oral" or "Best Paper"
+    org         - affiliation shown as a small badge next to the title
+    org_logo    - image for that badge; falls back to a seedling icon
+    project     - project / demo page URL (`website` also works)
+    code / video / slidesurl / bibtexurl - extra link buttons
+{% endcomment %}
+
+{% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" | strip %}
+{% assign media = post.teaser_gif | default: post.teaser | default: post.header.teaser %}
+{% assign project_url = post.project | default: post.website %}
+
+{% capture org_badge %}{% if post.org or post.org_logo %}<span class="pub__org{% unless post.org %} pub__org--logo{% endunless %}">{% if post.org_logo %}<img src="{{ post.org_logo | prepend: site.baseurl }}" alt="{{ post.org | default: 'affiliation' }}" loading="lazy">{% else %}<i class="fa-solid fa-seedling" aria-hidden="true"></i>{% endif %}{{ post.org }}</span>{% endif %}{% endcapture %}
+
+<article class="pub reveal">
+  {% comment %} Nothing in the card links out; only the buttons below do. {% endcomment %}
+  {% if media %}
+    <div class="pub__media">
+      <img src="{{ media | prepend: site.baseurl }}" loading="lazy" alt="{{ title | strip_html }}">
+    </div>
+  {% endif %}
+
+  <div class="pub__body">
+    <h3 class="pub__title">{{ title }} {{ org_badge }}</h3>
+
+    {% if post.authors %}
+      <p class="pub__authors">{{ post.authors | markdownify | remove: "<p>" | remove: "</p>" }}</p>
+    {% endif %}
+
+    <p class="pub__meta">
+      {% if post.venue %}<span class="op-badge op-badge--venue">{{ post.venue }}</span>{% endif %}
+      {% if post.date %}<span class="op-badge">{{ post.date | date: "%Y" }}</span>{% endif %}
+      {% if post.award %}<span class="op-badge op-badge--award"><i class="fas fa-award" aria-hidden="true"></i>{{ post.award }}</span>{% endif %}
+    </p>
+
+    {% if post.highlights %}
+      <ul class="pub__points">
+        {% for point in post.highlights %}
+          <li>{{ point | markdownify | remove: "<p>" | remove: "</p>" }}</li>
+        {% endfor %}
+      </ul>
+    {% elsif post.excerpt %}
+      <div class="pub__tldr">{{ post.excerpt | markdownify }}</div>
+    {% endif %}
+  </div>
+
+  {% if post.paperurl or project_url or post.code or post.video or post.slidesurl or post.bibtexurl %}
+    <p class="pub__links">
+      {% if post.paperurl %}<a class="op-btn op-btn--sm" href="{{ post.paperurl }}"><i class="fas fa-file-pdf" aria-hidden="true"></i>Paper</a>{% endif %}
+      {% if project_url %}<a class="op-btn op-btn--sm" href="{{ project_url }}"><i class="fas fa-globe" aria-hidden="true"></i>Project</a>{% endif %}
+      {% if post.code %}<a class="op-btn op-btn--sm" href="{{ post.code }}"><i class="fab fa-github" aria-hidden="true"></i>Code</a>{% endif %}
+      {% if post.video %}<a class="op-btn op-btn--sm" href="{{ post.video }}"><i class="fas fa-circle-play" aria-hidden="true"></i>Video</a>{% endif %}
+      {% if post.slidesurl %}<a class="op-btn op-btn--sm" href="{{ post.slidesurl }}"><i class="fas fa-display" aria-hidden="true"></i>Slides</a>{% endif %}
+      {% if post.bibtexurl %}<a class="op-btn op-btn--sm" href="{{ post.bibtexurl }}"><i class="fas fa-quote-right" aria-hidden="true"></i>BibTeX</a>{% endif %}
+    </p>
+  {% endif %}
+</article>

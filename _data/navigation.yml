@@ -1,33 +1,25 @@
-# The following is the order of the links in the header of the website.
+# Top navigation of the site.
 #
-# Changing the order here will adjust the order and you can also add additional
-# links. Removing a link prevents it from showing in the header, but does not
-# prevent it from being included in the site.
+# The front page is a single page, so every entry below points to an anchor of a
+# section rendered by _layouts/home.html. The `section` key is what the
+# scrollspy in assets/js/onepage.js uses to highlight the current section.
 #
-# NOTE that only one of the CV options should be selected, the first is for the
-#      Markdown formatted page while the second is generated using JSON.
+# Adding an entry here is not enough on its own: the matching section has to be
+# included in _layouts/home.html as well.
 
 main:
+  - title: "Bio"
+    url: /#bio
+    section: bio
+
   - title: "Publications"
-    url: /publications/
+    url: /#publications
+    section: publications
 
-  - title: "Talks"
-    url: /talks/    
+  - title: "Projects"
+    url: /#projects
+    section: projects
 
-  - title: "Teaching"
-    url: /teaching/    
-    
-  - title: "Portfolio"
-    url: /portfolio/
-        
-  - title: "Blog Posts"
-    url: /year-archive/
-    
   - title: "CV"
-    url: /cv/
-    
-  # - title: "CV"
-  #   url: /cv-json/
-    
-  - title: "Guide"
-    url: /markdown/
+    url: /#cv
+    section: cv
