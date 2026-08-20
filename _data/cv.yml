@@ -43,8 +43,8 @@ education:
 
 skills:
   - group: "Research"
-    items: ["Vision-Language-Action", "Imitation Learning", "Reinforcement Learning", "Representation Learning", "World Models"]
+    items: ["VLA", "Data Scaling", "Representation Learning", "Data Flywheel", "Embodied AI"]
   - group: "Engineering"
-    items: ["PyTorch", "JAX", "Python", "C++", "ROS 2", "CUDA", "Distributed Training"]
-  - group: "Robotics Stack"
-    items: ["IsaacSim", "MuJoCo", "Franka / UR5", "Dexterous Hands", "Teleoperation"]
+    items: ["PyTorch", "Python", "C++", "Ray", "CUDA", "Distributed Training"]
+  - group: "Soft"
+    items: ["Project Leadership", "Team Collaboration", "Communication", "IELTS 7.0", "GRE 320"]

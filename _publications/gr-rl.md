@@ -8,7 +8,7 @@ authors: "Yunfei Li, Xiao Ma, Jiafeng Xu, Yu Cui, Zhongren Cui, Zhigang Han, Liq
 highlights:
   - '<span style="font-size:0.8em"> **GR-RL** proposes a multi-stage training pipeline that <span style="color:#2e86de">filters, augments, and reinforces </span> the demonstrations by reinforcement learning.  </span>' 
   - '<span style="font-size:0.8em"> **GR-RL** is the first learning-based policy that can autonomously lace up a shoe by  <span style="color:#2e86de">threading shoelaces</span> through multiple eyelets with an <span style="color:#2e86de"> 83.3% success rate <span>. </span>'
-teaser_gif: /images/projects/gr3.gif 
+teaser_gif: /images/projects/gr-rl.gif 
 
 org_logo: /images/logos/seed_logo.png
 paperurl: "https://arxiv.org/abs/2512.01801"

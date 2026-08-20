@@ -16,9 +16,10 @@ main:
     url: /#publications
     section: publications
 
-  - title: "Projects"
-    url: /#projects
-    section: projects
+  # Projects 板块仍在页面上，只是不放进导航；取消注释即可加回
+  # - title: "Projects"
+  #   url: /#projects
+  #   section: projects
 
   - title: "CV"
     url: /#cv

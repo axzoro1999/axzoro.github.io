@@ -17,10 +17,6 @@
   /* keep footer in normal document flow so custom widgets do not overlap content */
   height: auto;
 
-  /* keep the footer on the bottom of the page */
-  position: fixed;
-  bottom: 0;
-
   -webkit-animation: intro 0.3s both;
           animation: intro 0.3s both;
   -webkit-animation-delay: 0.45s;
@@ -57,12 +53,11 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  /* don't pin the footer on mobile devices */
-  .page__footer {
-    position: relative;
-    bottom: auto;
-  }
+/* The theme's main.min.js reserves room for a pinned footer by writing an inline
+   margin-bottom on <body>. The footer now scrolls with the page, so that space
+   has to be taken back, and only !important beats an inline style. */
+body {
+  margin-bottom: 0 !important;
 }
 
 .page__footer-copyright {

@@ -11,29 +11,4 @@
       <p>{{ a.bio }}</p>
     {% endif %}
   </div>
-
-  {% if a.interests %}
-    <div class="op-chips reveal">
-      {% for item in a.interests %}
-        <span class="op-chip">{{ item }}</span>
-      {% endfor %}
-    </div>
-  {% endif %}
-
-  <div class="op-stats reveal">
-    <div class="op-stat">
-      <span class="op-stat__num">{{ site.publications | size }}</span>
-      <span class="op-stat__label">Publications</span>
-    </div>
-    <div class="op-stat">
-      <span class="op-stat__num">{{ site.projects | size }}</span>
-      <span class="op-stat__label">Projects</span>
-    </div>
-    {% if a.email %}
-      <div class="op-stat">
-        <span class="op-stat__label">Open to collaboration</span>
-        <span class="op-stat__mail"><a href="mailto:{{ a.email }}">{{ a.email }}</a></span>
-      </div>
-    {% endif %}
-  </div>
 </section>

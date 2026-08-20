@@ -9,9 +9,9 @@
 # Basic Site Settings
 locale                   : "cn-China"
 site_theme               : "contrast" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Yuyang Xiao"   # 左上角站名 + 浏览器标签页标题
+title                    : "Homepage"   # 左上角站名 + 浏览器标签页标题
 title_separator          : "-"
-name                     : &name "Yuyang Xiao"
+name                     : &name "Homepage"
 description              : &description "Yuyang Xiao's academic homepage"
 url                      : https://axzoro.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
@@ -26,35 +26,34 @@ author:
   avatar           : "profile.png"
   name             : "Yuyang Xiao"
   pronouns         : "he/him"  
-  role             : "Robotics Researcher @ ByteDance Seed-Robotics"   # shown under the name on the front page
-  bio              : "I am a robotics researcher at Bytedance Seed-Robotics. My work and research focus on manipulation VLA, multi-modal modeling, scalable data-efficient representation learning, and embodied AI, with a long-term interest in latent action paradigms and world cognition for learning physical interaction dynamics."
+  role             : "Research Engineer @ ByteDance Seed-Robotics"   # shown under the name on the front page
+  # bio              : "I am a robotics researcher at Bytedance Seed-Robotics. My work and research focus on manipulation VLA, multi-modal modeling, scalable data-efficient representation learning, and embodied AI, with a long-term interest in latent action paradigms and world cognition for learning physical interaction dynamics."
   location         : "BeiJing, China"
-  employer         : "ByteDance Ltd."
+  employer         : "ByteDance."
   email            : "axzoro1999@gmail.com"      # primary address used by the mail button
   email_alt        : "axzoro1999@163.com"        # optional secondary address
   # cv_pdf         : "/files/cv.pdf"             # 把 PDF 放进 files/ 后取消注释，CV 板块会出现下载按钮
 
-  # Keywords rendered as chips in the front page bio section
-  interests:
-    - "Manipulation VLA"
-    - "Multi-modal Modeling"
-    - "Latent Action"
-    - "Data-efficient Representation Learning"
-    - "Embodied AI"
-    - "World Cognition"
+  # 研究方向已经写进 _pages/about.md 的正文，模板不再单独渲染这组关键词
+  # interests:
+  #   - "Manipulation VLA"
+  #   - "Multi-modal Modeling"
+  #   - "Data-efficient Representation Learning"
+  #   - "Embodied AI"
+  #   - "World Cognition"
 
   # Academic websites
-  googlescholar    : "https://scholar.google.com/citations?hl=zh-CN&view_op=list_works&gmla=AO4B3jsifC3xP9_0gQpLE_qRlzpxKksruPWwvXi3CT_Erj9Fx3wsSm7KMs40LC4HVnxD04b2EXYRRKUZdMzXdcg56HyGh7I4HVToOvbPCZAA-qrW2YIwv_LMupwAzpCCj3g&user=mzB2h4IAAAAJ"
+  googlescholar: "https://scholar.google.com/citations?hl=zh-CN&view_op=list_works&gmla=AO4B3jsifC3xP9_0gQpLE_qRlzpxKksruPWwvXi3CT_Erj9Fx3wsSm7KMs40LC4HVnxD04b2EXYRRKUZdMzXdcg56HyGh7I4HVToOvbPCZAA-qrW2YIwv_LMupwAzpCCj3g&user=mzB2h4IAAAAJ"
 
   # Social media
   instagram        : # Username
   linkedin         : # Username
-  steam            : # Username
+  steam            : "axzoro"
   X(twitter)          : # Username for X / Twitter
   zhihu            : # Username
 
 # Site Settings
-teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews
+teaser                   : "/images/projects/latent_action.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
 future                   : true
@@ -87,7 +86,7 @@ staticman:
       options:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
-  hide                   : false     # change to true to hide the RSS feed in the footer
+  hide                   : true      # true 时页脚不再显示 RSS "Feed" 链接（feed.xml 仍然会生成）
   path                   : # blank (default) uses feed.xml
 
 
@@ -194,7 +193,7 @@ collections:
     output: true
     permalink: /:collection/:path/
   projects:
-    output: true
+    output: false
     permalink: /:collection/:path/
 
 
