@@ -22,10 +22,10 @@ repository               : "axzoro1999/axzoro1999.github.io" # owner/repo，供 
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "wukong.jpeg"
   name             : "Yuyang Xiao"
   pronouns         : "he/him"  
-  role             : "Research Engineer @ ByteDance Seed-Robotics"   # shown under the name on the front page
+  role             : "Researcher @ ByteDance Seed"   # shown under the name on the front page
   # bio              : "I am a robotics researcher at Bytedance Seed-Robotics. My work and research focus on manipulation VLA, multi-modal modeling, scalable data-efficient representation learning, and embodied AI, with a long-term interest in latent action paradigms and world cognition for learning physical interaction dynamics."
   location         : "BeiJing, China"
   employer         : "ByteDance."
